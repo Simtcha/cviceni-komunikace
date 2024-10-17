@@ -1,5 +1,3 @@
-import { InputField } from "./InputField";
-
 /*
 Zadání: Máme k dispozici specializovanou komponentu InputField pro rychlé vytvoření vstupního pole
   s popiskem. Chceme, aby se jméno, které uživatel zadává, zobrazilo pod nadpisem.
@@ -12,12 +10,22 @@ Krok 3: Do prop `onValueChange` předejte funkci, která nastaví novou hodnotu 
 Krok 4: Vyzkoušejte si obousměrný binding. Do komponenty `InputField` přidejte prop `value`, kterou
   komponenta zobrazí v poli jako svou hodnotu. Do této prop předejte stav se jménem. Vyzkoušejte, že stránka funguje, jak má.
 */
+import { InputField } from "./InputField";
+import { useState } from "react";
 
 export const Ukol4 = () => {
+
+  const [jmeno, setJmeno] = useState('');
+
   return (
     <>
-      <p>Jméno:</p>
-      <InputField label="Jméno" type="text" />
+      <p>Jméno: <strong>{jmeno}</strong></p>
+      <InputField 
+      label="Jméno"
+      type="text" 
+      value={jmeno}
+      onValueChange={(newValue) => setJmeno(newValue)}
+      />
     </>
   );
 };
